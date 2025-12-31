@@ -127,6 +127,47 @@
 .modal-sheet {
   animation: slideUp 0.5s ease-out forwards;
 }
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 15px;
+  margin-bottom: 120px;
+}
+
+.pagination-btn {
+  background: #122128;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 70px;
+}
+
+.pagination-btn:hover {
+  background: #1a3340;
+  transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+  background: #2a3844;
+  color: #6a7985;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination-info {
+  color: #fff;
+  font-size: 13px;
+  background: rgba(18, 33, 40, 0.5);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
 </style>
 
 
@@ -215,11 +256,17 @@
   <!-- Amardeep Kesharwani -->
 
   <div class="fragment home show">
-   
+
 
     <section class="book-list" >
 
     </section>
+
+    <div class="pagination-container">
+      <button class="pagination-btn" id="prevPage">Prev</button>
+      <span class="pagination-info" id="pageInfo">1 / 1</span>
+      <button class="pagination-btn" id="nextPage">Next</button>
+    </div>
   </div>
   <div class="fragment bookmark" >
     <h2 class="list-title" >Wishlist</h2>
@@ -488,6 +535,11 @@ let index = 1;
 let story = {};
 let ath, dn;
 
+// Pagination variables
+let currentPage = 1;
+const itemsPerPage = 20;
+let filteredBooks = [];
+
 
 
 //save user wish list to local storage
@@ -521,12 +573,37 @@ function loadThemePreference() {
 $(document).ready(function (){
 $('#searchInput').on('input', function () {
   const value = $(this).val();
+  currentPage = 1; // Reset to first page on search
   setBook(value);
+});
+
+// Pagination button handlers
+$('#prevPage').click(function() {
+  if (currentPage > 1) {
+    currentPage--;
+    const filter = $('#searchInput').val();
+    setBook(filter);
+    // Scroll to top of book list
+    $('.book-list').get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
+
+$('#nextPage').click(function() {
+  const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    const filter = $('#searchInput').val();
+    setBook(filter);
+    // Scroll to top of book list
+    $('.book-list').get(0).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 });
 
  $(".home-btn").click(function(){
   $(".bookmark, .about").hide();
-  $(".home").fadeIn()
+  $(".home").fadeIn();
+  currentPage = 1;
+  setBook($('#searchInput').val());
  });
  $(".bookmark-btn").click(function(){
    $(".home, .about").hide();
@@ -665,9 +742,37 @@ function setBook(filter = "") {
   // Sort by ID descending to always ensure latest first
   const sorted = [...stories].sort((a, b) => b.id - a.id);
 
-  sorted
-    .filter(book => book.Writers_name.toLowerCase().includes(filter.toLowerCase()))
-    .forEach(book => addBook(book));
+  // Filter books
+  filteredBooks = sorted.filter(book =>
+    book.Writers_name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  // Calculate pagination
+  const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  // Get books for current page
+  const booksToShow = filteredBooks.slice(startIndex, endIndex);
+
+  // Add books to DOM
+  booksToShow.forEach(book => addBook(book));
+
+  // Update pagination UI
+  updatePaginationUI(totalPages);
+}
+
+function updatePaginationUI(totalPages) {
+  const prevBtn = document.getElementById('prevPage');
+  const nextBtn = document.getElementById('nextPage');
+  const pageInfo = document.getElementById('pageInfo');
+
+  // Update page info
+  pageInfo.textContent = `${currentPage} / ${totalPages || 1}`;
+
+  // Enable/disable buttons
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage >= totalPages || totalPages === 0;
 }
 
 
