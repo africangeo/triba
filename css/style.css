@@ -1,0 +1,161 @@
+
+    .navbar #btn.act {
+      transform: rotate(360deg);
+	   background: none; /* Ensure no background effects */
+    border: none; /* Remove borders if any */
+    }
+    .navbar #btn:active,.navbar #mode:active {
+      background: rgba(255,255,255,.1);
+      transition: 0.3s;
+    }
+    .navbar #mode {
+ font-size: 30px;
+    width: 72px;
+    height: 50px;
+  display: inline-flex; /* Centers the icon inside the touch area */
+  justify-content: center; /* Centers the icon horizontally */
+  align-items: center; /* Centers the icon vertically */
+  border-radius: 50%; /* Circular shape */
+    background: none !important; /* Ensure no background effects */
+  color: #ffffff; /* White icon color for readability */
+  transition: background-color 0.3s, transform 0.2s; /* Smooth hover effects */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+     
+    }
+
+    .side-menu {
+      position: fixed;
+	  
+       bottom: 12%;
+      left: 100%;
+      width: 280px;
+      
+      background: transparent;
+      transition: 0.4s ease-in-out;
+      z-index: 101;
+    }
+    .side-menu.act {
+      left: 0;
+	  width: 280px;
+	  background: #608103;
+	 
+    }
+    
+    .side-menu ul li a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 14px 20px;
+    
+      font-size: 18px;
+      font-weight: 300;
+      color: #FFFFFF;
+      cursor: default;
+	  text-decoration: none;
+    }
+    
+
+    .side-menu ul li a span {
+      width: 50px;
+      font-size: 25px;
+    }
+
+.brand-logo{
+font-size: 20px;
+font-weight: bolder;
+margin-right: 15%;
+
+height: 48px;
+display: inline-flex;
+
+    align-items: center;
+	  
+}
+
+
+
+
+
+.material-icons {
+
+-webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    outline: none; /* Remove focus outline */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#btn {
+  display: inline-block;
+  font-size: 30px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+#btn.rotate {
+  transform: rotate(180deg);
+  color: #fff; /* Change color when active */
+}
+
+
+
+/*changes in latest ui*/
+
+
+.navbar{
+	Background: #011320;
+	    transform-style: preserve-3d;
+}
+
+
+.side-menu.act {
+	Background: #011320;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cover {
+	Background: #010e18;
+	
+}
+
+
+.heading-3{
+
+white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 13ch;
+	text-align: center !important;
+}
+
+
+	#priceText{
+	display: inline-block;
+	}

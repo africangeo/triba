@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link href="familyMaterialIcons.css" rel="stylesheet">
+	
+	<link href="familyOpenSansdisplayswap" rel="stylesheet">
+ 
+   <link href="assesol/css/general.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/fontawesome.css">
+<link rel="stylesheet" href="css/cloudflareFontawasome15.css">
+
+
+
+	
+	  <title> Tiba za kisunnah </title>
+<style>
+
+.search-box {
+
+  right: 10px; /* Adjust the right position as needed */
+  top: 0!important; /* Position it at the top of the navbar */
+  z-index: 10; /* Ensure it appears above other navbar items */
+  width: fit-content;
+  height: 48px;
+  border-radius: 25px; /* Match the rounded corners */
+  padding: 5px; /* Add padding for some spacing */
+}
+
+#searchInput {
+  height: 48px;
+  width: 50px;
+  border-style: none;
+  padding: 12px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  outline: none;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
+  background-color: transparent;
+  padding-right: 40px;
+  color: #fff;
+  position: absolute;
+  right: 0; /* Align it with the button */
+  top: 0 !important; /* Align it with the button */
+}
+
+#searchInput::placeholder {
+  color: grey;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 100;
+  top: 0 !important;
+}
+
+.btn-search {
+  width: 50px;
+  height: 48px;
+  border-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  z-index: 5; /* Ensure the button is above the input */
+  color: #ffffff;
+  background-color: transparent;
+
+}
+
+.btn-search:focus ~ #searchInput {
+  width: 200px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+#searchInput:focus {
+  width: 200px;
+  border-radius: 0px;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+  top: 0 !important;
+}
+
+
+ .search-box input {
+    width: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    background: white;
+  }
+
+  .search-box.active input {
+    width: 160px;
+    opacity: 1;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+  }
+
+  .brand-logo.right.hidden {
+    display: none;
+  }
+  
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-sheet {
+  animation: slideUp 0.5s ease-out forwards;
+}
+</style>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Disable context menu
+      document.addEventListener('contextmenu', e => {
+        if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+          e.preventDefault();
+        }
+      });
+
+      // Disable copy, cut, and paste outside inputs
+      document.addEventListener('copy', e => {
+        if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+          e.preventDefault();
+        }
+      });
+
+      document.addEventListener('cut', e => {
+        if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+          e.preventDefault();
+        }
+      });
+
+      document.addEventListener('paste', e => {
+        if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+          e.preventDefault();
+        }
+      });
+
+      // Optional: block selection using selectstart except on input/textarea
+      document.addEventListener('selectstart', e => {
+        if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+
+</head>
+
+<body>
+<div id="toast">No internet connection</div>
+
+  <nav class="navbar">
+    <br /><br /><br />
+  
+    <span id="btn" class="material-icons">menu</span>
+	
+	
+		<div class="search-box">
+    <button class="btn-search"> <span class="material-icons">search</span></button>
+   <input type="text" id="searchInput" placeholder="tafuta" />
+  </div>
+
+	<span class="brand-logo right">Tiba Asili</span>
+ 
+  </nav>
+  <div class="side-menu" id="menu">
+      <ul>
+           <li><a href="main.html"><span class="material-icons">home</span>Tiba Asili</a></li>
+	 
+	
+   
+</li>
+    </ul>
+  </div>
+  <div class="back">
+
+  </div>
+  
+   <script src="fonts/jquery.min.js"></script>
+ 
+
+
+  <div class="loader" id="chapterLoader" style="display: none;"></div>
+ 
+
+
+
+<main class="main hide" >
+  
+	<br /><br />
+  <!-- Amardeep Kesharwani -->
+
+  <div class="fragment home show">
+   
+
+    <section class="book-list" >
+
+    </section>
+  </div>
+  <div class="fragment bookmark" >
+    <h2 class="list-title" >Wishlist</h2>
+    <section class="wish-list" >
+    </section>
+  </div>
+  <div class="fragment about" >
+    <h2 class="list-title" >Kuhusu</h2>
+    <section>
+    
+  <p style="text-align: justify;"><span style="font-family: georgia;"><b>&nbsp;Ndugu mtumiaji wa App hii ya tiba asili na Jadi,&nbsp;</b></span></p><p style="text-align: justify;"><span style="font-family: georgia;">Tunapenda kukufahamisha kuwa Lengo kubwa la App hii ni kukuwezesha kujifunza mambo mablimbali yanayohusu tiba za jadi ambayo ndio asili yetu Waafrika.</span></p><p style="text-align: justify;"><span style="font-family: georgia;">App hii au vitabu utavyovipata hapa havilengi kukufundisha au kukushawishi kufanya mambo yasiyofaa kama vile uchawi n.k.</span></p><p style="text-align: justify;"><span style="font-family: georgia;">Hatutokuwa ni wenye kuwajibika kwa mujibu wa sheria ikiwa utadhurika kwa namna yoyote ile kwa kujaribu kufata kwa vitendo yale yaliyoandikwa hapa bila kupata maelekezo ya zaidi kutoka kwa mtaalam, Ingawa dawa zote za tibajadi zilizo orodheshwa&nbsp; hapa ni salama kwa matumizi na kwa kutibu ugonjwa ulioainishwa.</span></p><p style="text-align: justify;"><span style="font-family: georgia;">Maudhui haya ni salama kwa wewe kujifunza mimea mbalimbali na kazi zake, kujifunza elimu ya viumbe na kukupa uelewa juu ya mambo yanayofanywa na wachawi ili kuweza kujikinga nayo.</span></p><p style="text-align: justify;"><span style="font-family: georgia;">App hii ni maalumu kwa watu wenye umri wa kuanzia miaka 35+, ikiwa una umri chini ya miaka hiyo unashauriwa kufuta App katika simu yako.</span></p><p style="text-align: justify;"><span style="font-family: georgia;">Kumbuka App hii ni bure kabisa, michango unayochangia haisimami kama malipo ya kutumia App bali ni mchango kwa ajili ya kuendeshea App hii na kuifanya iendelee kuwepo. Hivyo utachangia tu ikiwa umeguswa na maudhui ya App na si vinginevyo.&nbsp;</span></p><p style="text-align: justify;"><span style="font-family: georgia;">Kwa maswali, msaada juu ya yale yaliyoandikwa humu au hayapo unaweza kutuuliza kupitia kitufe cha msaada .</span></p><p style="text-align: justify;"><span style="font-family: georgia;">App hii haikusanyi taarifa binafsi kama vile jina la mtumiaji, umri na jinsia. Tunaweza kukusanya namba ya simu ikiwa utachangia mchango wako au kuhitaji kuwasiliana nasi. Namba yako haitotumika kinyume na lengo lililowasilishwa. Ikiwa hauhitaji tena namba yako kuendelea kuhifadhiwa nasi, unaweza kuwasiliana nasi kuruhusu kufutwa kwa namba yako.</span></p><p style="text-align: justify;"><br /></p></div>
+   </section>
+  </div>
+  <footer class="footer" >
+   <button class="home-btn" >
+    <span class="material-icons" >home</span>
+    <h4>Home</h4>
+   </button>
+   <button class="bookmark-btn">
+   <span class="material-icons" >bookmark</span>
+   <h4>Bookmark</h4>
+   </button>
+   <button class="about-btn">
+    <span class="material-icons" >info</span>
+    <h4>About</h4>
+   </button>
+  </footer>
+</main>
+
+<div class="stories">
+  <div>
+    <div class="story__header" >
+      <span class="close material-icons" >arrow_back</span>
+      <div class="img">
+        <img id="img" alt="" src="">
+      </div>
+      <h1 class="Writers_name" ></h1>
+     
+      <div class="action" >
+      
+        <span class="material-icons add-bookmark" >bookmark</span>
+        <span class="material-icons dark-mode" >visibility</span>
+      </div>
+    </div>
+    <div class="view-like">
+     
+    </div>
+    <div class="content">
+    </div>
+    <div class="story__footer" >
+     <button class="btn prev-btn">Nyuma</button>
+      <button class="btn close" >Funga</button>
+      <button class="btn next-btn">Mbele</button>     
+    </div>
+  </div>
+</div>
+
+<div id="payModal" class="fixed inset-0 bg-black/60 hidden items-end justify-center z-[99999]">
+
+  <div class="modal-sheet bg-white rounded-t-3xl p-6 w-full max-w-md shadow-2xl">
+
+    <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mb-4"></div>
+
+    <h2 class="text-lg font-semibold text-gray-800 text-center mb-5">
+      Jifunze mwezi mzima
+	 <h5 class="text-lg font-semibold text-gray-800 text-center mb-5">Lipia Tsh 7000 kuanza</h5>
+    </h2>
+
+    <input
+      id="username"
+      class="border border-gray-300 rounded-xl p-3 w-full mb-3 focus:outline-none"
+      placeholder="Username"
+    >
+
+    <select
+      id="network"
+      class="border border-gray-300 rounded-xl p-3 w-full mb-3 bg-white focus:outline-none"
+    >
+      <option value="">Select Network</option>
+      <option>Airtel</option>
+      <option>Vodacom</option>
+      <option>Yas</option>
+    </select>
+
+    <input
+      id="phone"
+      class="border border-gray-300 rounded-xl p-3 w-full mb-4 focus:outline-none"
+      placeholder="07XXXXXXXX"
+      inputmode="numeric"
+	  >
+ 
+
+<div class="flex items-center justify-center gap-4 mb-5">
+  <img src="img/airtel.png" class="h-6 w-6 rounded-full object-contain border border-gray-200 p-0.5">
+  <img src="img/mpesa.jpeg" class="h-6 w-6 rounded-full object-contain border border-gray-200 p-0.5">
+  <img src="img/yas.jpg" class="h-6 w-6 rounded-full object-contain border border-gray-200 p-0.5">
+</div>
+
+
+    <button
+      id="payBtn"
+      class="bg-blue-600 active:bg-blue-700 text-white w-full py-3 rounded-2xl text-base font-medium shadow-md disabled:opacity-60"
+    >
+      Subscribe NOW (TZS 7000)
+    </button>
+
+    <p
+      id="status"
+      class="text-sm mt-4 text-center text-gray-600 min-h-[1.25rem]"
+    ></p>
+
+  </div>
+</div>
+
+<script>
+  // DO NOT redeclare modal
+  // const modal = document.getElementById('payModal'); <-- REMOVE THIS line
+
+  const script = document.createElement('script');
+  script.src = "https://cdn.tailwindcss.com";
+  script.onload = () => {
+    // Tailwind is ready, show modal if needed
+    const popupActive = localStorage.getItem('popup_active');
+    const subscribedUntil = localStorage.getItem('subscribed');
+    const now = Date.now();
+
+    if (!subscribedUntil || now > parseInt(subscribedUntil)) {
+      if (popupActive) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      } else {
+        setTimeout(() => {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          localStorage.setItem('popup_active', 'yes');
+        }, 60000); // delay 5s before showing
+      }
+    }
+  };
+  document.head.appendChild(script);
+</script>
+
+ 
+<div class="toast" ></div>
+
+
+
+<!-- script -->
+<script src="scripts/jquery.min.js"></script>
+ <script>
+let stories = [];
+function blobToBase64(blob) {
+  return new Promise((resolve, _) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
+
+
+async function syncChapters() {
+  const loader = document.getElementById('chapterLoader');
+  loader.style.display = 'block'; // show loader
+
+  try {
+    const res = await fetch("https://api.dirajumla-publishers.com/tibaapp/chapters/mitishamba.json");
+
+    // ✅ If response is not OK (user has data ON but no MB, ISP block, etc.)
+    if (!res.ok) {
+      throw new Error("Server responded with " + res.status);
+    }
+
+    const data = await res.json();
+    stories = [];
+
+    // Save latest chapters JSON to localStorage
+    localStorage.setItem("chapters_mitishamba", JSON.stringify(data));
+
+    // Map to promises for parallel image fetching
+    const chapterPromises = data.map(async (chapter) => {
+      const cacheKey = `thumb_${chapter.id}_mitishamba`;
+      let base64Thumb = localStorage.getItem(cacheKey);
+
+      if (!base64Thumb) {
+        try {
+          const imgUrl = chapter.thumbnail.startsWith("http")
+            ? chapter.thumbnail
+            : "https://api.dirajumla-publishers.com/tibaapp/" + chapter.thumbnail;
+          const imgRes = await fetch(imgUrl);
+
+          if (!imgRes.ok) throw new Error("Image failed: " + imgRes.status);
+
+          const blob = await imgRes.blob();
+          base64Thumb = await blobToBase64(blob);
+          localStorage.setItem(cacheKey, base64Thumb);
+        } catch (e) {
+          console.warn(`Image fetch failed for chapter ${chapter.id}:`, e);
+          base64Thumb = chapter.thumbnail;
+        }
+      }
+
+      chapter.thumbnail = base64Thumb;
+      return chapter;
+    });
+
+    stories = await Promise.all(chapterPromises);
+
+    setBook();
+    updateCoverImageRandomly();
+    loadWishlistFromLocal();
+
+  } catch (err) {
+    console.error("Offline or server blocked:", err);
+    makeToast(" ");
+
+    // ✅ Load cached chapters if available
+    const cached = localStorage.getItem("chapters_mitishamba");
+    if (cached) {
+      try {
+        const data = JSON.parse(cached);
+        stories = data.map(chapter => {
+          const cacheKey = `thumb_${chapter.id}_mitishamba`;
+          const savedThumb = localStorage.getItem(cacheKey);
+          if (savedThumb) chapter.thumbnail = savedThumb;
+          return chapter;
+        });
+
+        setBook();
+        updateCoverImageRandomly();
+        loadWishlistFromLocal();
+      } catch (e) {
+        console.error("Failed to parse cached chapters:", e);
+      }
+    }
+  } finally {
+    loader.style.display = 'none'; // always hide loader
+  }
+}
+
+// Try to sync every 2 minutes if online
+setInterval(() => {
+  if (navigator.onLine) {
+    syncChapters();
+  }
+  updateCoverImageRandomly();
+}, 120000);
+
+syncChapters();
+
+
+  
+  function updateCoverImageRandomly() {
+  if (stories.length === 0) return;
+
+  const randomIndex = Math.floor(Math.random() * stories.length);
+  const randomThumb = stories[randomIndex].thumbnail;
+
+  const coverImg = document.querySelector('.cover__img');
+  if (coverImg) {
+    coverImg.src = randomThumb;
+  }
+}
+  
+  
+let index = 1;
+let story = {};
+let ath, dn;
+
+
+
+//save user wish list to local storage
+function saveWishlistToLocal() {
+  const wishlistIds = stories.filter(s => s.wishlist).map(s => s.id);
+  localStorage.setItem('wishlist', JSON.stringify(wishlistIds));
+}
+
+function loadWishlistFromLocal() {
+  const stored = JSON.parse(localStorage.getItem('wishlist') || '[]');
+  stories.forEach(story => {
+    story.wishlist = stored.includes(story.id);
+  });
+}
+
+function saveThemePreference(isDark) {
+  localStorage.setItem('darkMode', isDark ? 'true' : 'false');
+}
+
+function loadThemePreference() {
+  const isDark = localStorage.getItem('darkMode') === 'true';
+  if (isDark) {
+    $(".stories").addClass("dark");
+    $(".dark-mode").addClass('red');
+  } else {
+    $(".stories").removeClass("dark");
+    $(".dark-mode").removeClass('red');
+  }
+}
+
+$(document).ready(function (){
+$('#searchInput').on('input', function () {
+  const value = $(this).val();
+  setBook(value);
+});
+
+ $(".home-btn").click(function(){
+  $(".bookmark, .about").hide();
+  $(".home").fadeIn()
+ });
+ $(".bookmark-btn").click(function(){
+   $(".home, .about").hide();
+   $(".bookmark").fadeIn();
+   setBookMark();
+ });
+ $(".about-btn").click(function(){
+   $(".home,.bookmark").hide();
+   $(".about").fadeIn()
+ });
+$(document).on("click", ".book", function () {
+  index = $(this).attr("data-id");
+  story = stories.find(s => s.id == index);
+  openStory();
+});
+
+ $(".close").click(function(){
+  $(".stories").removeClass("show");
+  $(".main").show();
+  setTimeout(() =>$(".stories").hide(),1000);
+ })
+$(".dark-mode").click(function(){
+  const isDark = $(".stories").toggleClass("dark").hasClass("dark");
+  $(this).toggleClass('red');
+  saveThemePreference(isDark);
+});
+
+ $(".start-btn").click(function(){
+  checkAuth()
+  $(".intro").fadeOut();
+  $(".main").fadeIn();
+ });
+ $('.like').click(function(){
+  if(story.liked) {
+   $(this).removeClass('red');
+   story.liked = false;
+   story.like--
+   $(".likes").text(story.like);
+   makeToast("remove like");
+   return;
+  } 
+  $(this).addClass('red');
+  story.liked = true;
+  story.like++
+  $(".likes").text(story.like);
+  makeToast("like this book")
+ })
+ 
+ 
+$('.add-bookmark').click(function(){
+  if(story.wishlist) {
+    $(this).removeClass('red');
+    story.wishlist = false;
+    makeToast('remove wishlist');
+  } else {
+    $(this).addClass('red');
+    story.wishlist = true;
+    makeToast('add wishlist');
+  }
+
+  saveWishlistToLocal();
+
+
+
+  $(this).addClass('red');
+  story.wishlist = true;
+  makeToast('add wishlist')
+ })
+ 
+// Array of book IDs for which to show the interstitial ad
+const interstitialBookIds = [500];
+
+$('.next-btn').click(function(){
+    index++;
+
+    // Check if the next button for any of the specified book IDs is clicked
+    if (interstitialBookIds.includes(index)) {
+        // Show the interstitial ad
+        Website2APK.showInterstitialAd();
+    }
+
+   let currentIndex = stories.findIndex(s => s.id == story.id);
+currentIndex++;
+if (currentIndex >= stories.length) currentIndex = 0;
+story = stories[currentIndex];
+openStory();
+makeToast('Kurasa ya mbele');
+});
+
+ $('.prev-btn').click(function(){
+let currentIndex = stories.findIndex(s => s.id == story.id);
+currentIndex--;
+if (currentIndex < 0) currentIndex = stories.length - 1;
+story = stories[currentIndex];
+openStory();
+makeToast('Kurasa ya nyuma');
+  
+ })
+});
+
+
+function setBookMark() {
+  $(".wish-list").html("");
+  const sorted = [...stories].sort((a, b) => b.id - a.id);
+  sorted.forEach(story => {
+    if (story.wishlist) {
+      addWishlistBook(story);
+    }
+  });
+}
+
+function openStory() {
+ $(".stories").show()
+ setTimeout(() => $(".stories").addClass("show"),$(".main").hide(),100);
+ $("#img").attr("src",story.thumbnail);
+ $(".Writers_name").text(story.Writers_name);
+ $(".book-author").text(story.author);
+ $(".likes").text(story.like);
+ $(".reading").text(story.reading);
+ $(".content").html(story.story)
+ $(".like").removeClass("red")
+ $('.add-bookmark').removeClass('red');
+ if(story.wishlist) {
+  $('.add-bookmark').addClass('red');
+ }
+ if(story.liked) {
+  $(".like").addClass("red")
+ } 
+ $(".stories").scrollTop(0);
+}
+ath =  $("meta[name='author']").attr("content");
+
+function setBook(filter = "") {
+  $(".book-list").html(""); // Clear
+
+  // Sort by ID descending to always ensure latest first
+  const sorted = [...stories].sort((a, b) => b.id - a.id);
+
+  sorted
+    .filter(book => book.Writers_name.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(book => addBook(book));
+}
+
+
+function addBook(book) {
+  const div = `
+  <div class="book" data-id="${book.id}">
+    <div class="book__thumbnail">
+      <img src="${book.thumbnail}" alt="">
+    </div>
+    <p>${book.Writers_name}</p>
+  </div>
+  `;
+  $('.book-list').append(div);
+}
+
+
+dn = "Amardeep Kesharwani";
+function addWishlistBook(book) {
+ const div = `
+ <div class="book wish" data-id="${book.id}">
+ <div class="book__thumbnail" >
+ <img src="${book.thumbnail}" alt="">
+ </div>
+ <p>${book.Writers_name}</p>
+ </div>
+ `;
+ $('.wish-list').append(div);
+ $(".wish").click(function() {
+   index = $(this).attr("data-id");
+   story = stories.find(s => s.id == index);
+   openStory();
+ })
+}
+function checkAuth() {
+ if(ath !== dn) {
+  $("body").hide();
+ }
+}
+function makeToast(msg) {
+ $('.toast').fadeIn();
+ $('.toast').text(msg);
+ setTimeout(() => $('.toast').fadeOut(),2500);
+}
+
+loadThemePreference();
+loadWishlistFromLocal();
+
+</script>
+
+
+<script>
+function decodeHtmlEntities(str) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = str;
+  return txt.value;
+}
+
+function fetchAndDisplayXML(buttonNumber) {
+  const target = document.getElementById("xmlContent");
+  target.innerHTML = '<div class="contentloader"></div>';
+
+  setTimeout(function () {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          const xmlDoc = xhr.responseXML;
+          const tag = "data" + buttonNumber;
+          const element = xmlDoc.getElementsByTagName(tag)[0];
+          // ✅ Decode and display clean HTML
+          target.innerHTML = element ? decodeHtmlEntities(element.innerHTML) : "Content not found.";
+        } else {
+          target.innerHTML = "Hauna Internet.";
+        }
+      }
+    };
+    xhr.open("GET", "https://api.dirajumla-publishers.com/tibaapp/chapters/mitishamba.xml", true);
+    xhr.send();
+  }, 300); // 1 second delay for loader
+}
+
+document.addEventListener("click", function (event) {
+  if (event.target.id.startsWith("button")) {
+    const number = parseInt(event.target.id.replace("button", ""));
+    if (!isNaN(number)) {
+      fetchAndDisplayXML(number);
+    }
+  }
+});
+</script>
+<script src="fonts/hammer.min.js"></script>
+  
+  <script type="text/javascript">
+    var f=0;$("#btn").click(()=>{0==f?(f=1,$(".back,#btn,.side-menu").addClass("act"),$("#btn").html("arrow_back")):(f=0,$(".back,#btn,.side-menu").removeClass("act"),$("#btn").html("menu"))}),$("#mode").click(()=>{0==f?(f=1,$("body,#mode,.navbar,.side-menu").addClass("dark"),$("#mode").html("light_mode")):(f=0,$("body,#mode,.navbar,.side-menu").removeClass("dark"),$("#mode").html("dark_mode"))}),document.onclick=(e=>{"btn"!==e.target.id&&"menu"!==e.target.id&&"mode"!==e.target.id&&($(".back,#btn,.side-menu").removeClass("act"),$("#btn").html("menu"))}),$(document)
+	
+	
+  </script>
+  
+
+
+
+<script>
+//search filter
+phoneInput.addEventListener("focus", () => {
+  setTimeout(() => {
+    phoneInput.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, 300);
+});
+
+
+
+// Set --vh CSS variable correctly
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+
+
+
+$(document).ready(function () {
+  $('.btn-search').click(function () {
+    $('.search-box').toggleClass('show');
+    $('#searchInput').focus();
+  });
+
+  $('#searchInput').on('input', function () {
+    const value = $(this).val();
+    setBook(value);
+  });
+});
+
+
+
+
+</script>
+
+
+
+<script>
+  const btnSearch = document.querySelector(".btn-search");
+  const searchBox = document.querySelector(".search-box");
+  const searchInput = document.getElementById("searchInput");
+  const brandLogo = document.querySelector(".brand-logo.right");
+
+  btnSearch.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent outer click
+    searchBox.classList.toggle("active");
+
+    if (searchBox.classList.contains("active")) {
+      searchInput.focus();
+      brandLogo.classList.add("hidden");
+    } else {
+      brandLogo.classList.remove("hidden");
+    }
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!searchBox.contains(e.target)) {
+      searchBox.classList.remove("active");
+      brandLogo.classList.remove("hidden");
+    }
+  });
+</script>
+
+
+
+
+<script>
+const modal = document.getElementById('payModal');
+const statusText = document.getElementById('status');
+const btn = document.getElementById('payBtn');
+
+const popupActive = localStorage.getItem('popup_active');
+const subscribedUntil = localStorage.getItem('subscribed');
+const now = Date.now();
+
+if (!subscribedUntil || now > parseInt(subscribedUntil)) {
+  // subscription expired or never subscribed
+  if (popupActive) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  } else {
+    setTimeout(() => {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      localStorage.setItem('popup_active', 'yes');
+    }, 60000); // popup delay in ms
+  }
+}
+
+
+
+async function phoneExists(phone) {
+  const res = await fetch(
+    "https://api.dirajumla-publishers.com/phonenumbers.json?nocache=" + Date.now()
+  );
+  const json = await res.json();
+  return json.phoneNumbers.includes(phone);
+}
+
+btn.onclick = async () => {
+  btn.disabled = true;
+  statusText.textContent = 'Waiting for payment...';
+
+  const phone = document.getElementById('phone').value;
+  const username = document.getElementById('username').value;
+  const network = document.getElementById('network').value;
+
+  if (await phoneExists(phone)) {
+    localStorage.setItem('subscribed', 'yes');
+    modal.remove();
+    return;
+  }
+
+  const res = await fetch('https://api.dirajumla-publishers.com/create_order.php', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({phone, username, network})
+  });
+
+  const data = await res.json();
+  const orderId = data.order_id;
+
+  let delay = 3000;
+  const start = Date.now();
+
+  while (Date.now() - start < 120000) {
+    await new Promise(r => setTimeout(r, delay));
+    delay = Math.min(delay * 2, 20000);
+
+    const s = await fetch(
+      'https://api.dirajumla-publishers.com/check_status.php?order_id=' + orderId
+    );
+    const js = await s.json();
+
+    if (js.status === 'COMPLETED') {
+      const expireDays = 30;
+const expireTime = Date.now() + expireDays * 24 * 60 * 60 * 1000; // 30 days in ms
+localStorage.setItem('subscribed', expireTime);
+localStorage.removeItem('popup_active');
+
+      modal.remove();
+      return;
+    }
+
+    if (js.status === 'FAILED') break;
+  }
+
+  statusText.textContent = 'Payment failed. Please reload page.';
+};
+</script>
+
+</body>
+</html>
